@@ -1,0 +1,331 @@
+/* Base styles for Inter font and general layout */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #eef2f7;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Container for the main content */
+.container {
+    max-width: 900px;
+    width: 100%;
+    margin: 30px 20px;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    font-weight: 700;
+    /* Inter Bold */
+}
+
+h2 {
+    color: #007bff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.6em;
+    font-weight: 600;
+    /* Inter Semi-Bold */
+}
+
+h3 {
+    color: #0060df;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    font-weight: 600;
+    /* Inter Semi-Bold */
+}
+
+/* Introductory text box */
+.intro-text {
+    background-color: #e0f7fa;
+    border-left: 6px solid #00bcd4;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    color: #006064;
+    border-radius: 6px;
+    font-size: 1.1em;
+}
+
+/* Section spacing */
+.input-section,
+.options-section,
+.output-section,
+.instructions-section {
+    margin-bottom: 30px;
+}
+
+/* Input group styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    /* Inter Semi-Bold */
+    color: #555;
+    font-size: 1.05em;
+}
+
+.input-group input[type="url"],
+.input-group input[type="text"],
+.input-group select {
+    padding: 12px 15px;
+    border: 1px solid #cce0ff;
+    /* Lighter blue border */
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.input-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.85em;
+}
+
+/* Styling for option groups */
+.options-group {
+    background-color: #f8faff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 25px;
+    border: 1px solid #e3f2fd;
+}
+
+/* Checkbox group styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+    /* Slightly larger checkbox */
+}
+
+/* Button styling */
+button {
+    background-color: #28a745;
+    /* Green for primary action */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto;
+    /* Allow button to size naturally */
+    display: inline-block;
+    /* For proper margin */
+}
+
+button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+#copyCommandBtn {
+    background-color: #007bff;
+    /* Blue for copy action */
+    margin-top: 15px;
+}
+
+#copyCommandBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Command output area */
+.command-output {
+    margin-top: 20px;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    border: 1px dashed #ced4da;
+}
+
+.command-output pre {
+    white-space: pre-wrap;
+    /* Wrap long commands */
+    word-break: break-all;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.95em;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    /* Allow horizontal scroll for very long commands */
+}
+
+.status-message {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #007bff;
+    /* Blue for copy status */
+}
+
+/* Instructions section */
+.instructions-section ol {
+    padding-left: 25px;
+}
+
+.instructions-section li {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.instructions-section code {
+    background-color: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    color: #c7254e;
+    /* Darker red for code */
+}
+
+.instructions-section pre code {
+    display: block;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+.instructions-section a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.instructions-section a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Hide or show groups based on checkbox state */
+#audioFormatGroup,
+#videoQualityGroup {
+    display: none;
+    /* Hidden by default, script will show/hide */
+    flex-direction: column;
+    /* Ensure elements stack vertically */
+}
+
+/* Tab styling */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    border-color: #007bff;
+    border-bottom: 2px solid #fff;
+    /* Overlap the bottom border */
+    color: #007bff;
+}
+
+.tab-content {
+    display: none;
+    /* Hidden by default */
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    /* Visual separation from tabs */
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 15px 10px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-button {
+        margin-right: 0;
+        margin-bottom: 5px;
+        border-radius: 6px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tab-button.active {
+        border-bottom: 1px solid #fff;
+    }
+}

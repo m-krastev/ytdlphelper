@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video Downloader & Extractor Command Generator</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Video Download & Extractor Command Generator</h1>
+
+            <p class="intro-text">
+                This tool helps you create commands to download or extract audio from videos using `yt-dlp`.
+                <br>
+                <strong>Important:</strong> This webpage cannot download files or run commands directly on your computer
+                for security reasons. You will need to copy the generated command and run it in your computer's
+                terminal.
+            </p>
+
+            <div class="input-section">
+                <h2>1. Enter Video URL</h2>
+                <div class="input-group">
+                    <label for="videoUrl">Video URL:</label>
+                    <input type="url" id="videoUrl" placeholder="Paste YouTube, Vimeo, etc., URL here" required>
+                </div>
+            </div>
+
+            <div class="options-section">
+                <h2>2. Choose Options</h2>
+
+                <div class="input-group">
+                    <label for="fileName">Output Filename (optional, e.g., MyVideo.mp4):</label>
+                    <input type="text" id="fileName" placeholder="Leave blank for default (video title)">
+                    <small>e.g., `My Awesome Video.mp4` or `My Audio Track.mp3`</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="outputFolder">Output Folder (optional, e.g., C:\Downloads or ~/Videos):</label>
+                    <input type="text" id="outputFolder" placeholder="Current folder (or specify a path)">
+                    <small>Ensure the folder exists on your computer.</small>
+                </div>
+
+                <div class="options-group">
+                    <h3>Processing Type</h3>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="extractAudio">
+                        <label for="extractAudio"><strong>Extract Audio Only</strong> (`-x` flag)</label>
+                    </div>
+
+                    <div class="input-group" id="audioFormatGroup">
+                        <label for="audioFormat">Audio Format (if extracting audio):</label>
+                        <select id="audioFormat">
+                            <option value="mp3">MP3</option>
+                            <option value="wav">WAV</option>
+                            <option value="opus">Opus</option>
+                            <option value="aac">AAC</option>
+                            <option value="best">Best Available (no re-encoding)</option>
+                        </select>
+                        <small>Choosing `best` might not re-encode, potentially faster.</small>
+                    </div>
+
+                    <div class="input-group" id="videoQualityGroup">
+                        <label for="quality">Video Quality:</label>
+                        <select id="quality">
+                            <option value="bestvideo+bestaudio/best">Best Available</option>
+                            <option value="bestvideo[height<=1080]+bestaudio/best[height<=1080]">1080p (Full HD)
+                            </option>
+                            <option value="bestvideo[height<=720]+bestaudio/best[height<=720]">720p (HD)</option>
+                            <option value="bestvideo[height<=480]+bestaudio/best[height<=480]">480p</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="options-group">
+                    <h3>Video Trimming (Optional)</h3>
+                    <div class="input-group time-input">
+                        <label for="startTime">Start Time (HH:MM:SS or MM:SS or S):</label>
+                        <input type="text" id="startTime" placeholder="e.g., 0:30, 1:05:00">
+                    </div>
+
+                    <div class="input-group time-input">
+                        <label for="endTime">End Time (HH:MM:SS or MM:SS or S):</label>
+                        <input type="text" id="endTime" placeholder="e.g., 2:00, 1:10:30">
+                    </div>
+                    <small>Requires `ffmpeg` installed on your computer for precise cutting.</small>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <h2>3. Your Command:</h2>
+                <pre><code id="generatedCommand">yt-dlp [options] "YOUR_VIDEO_URL"</code></pre>
+                <button id="copyCommandBtn">Copy Command</button>
+                <p class="status-message" id="copyStatus"></p>
+            </div>
+
+            <div class="instructions-section">
+                <h2>4. How to Use the Command:</h2>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="windows">Windows</button>
+                    <button class="tab-button" data-tab="macos">macOS</button>
+                    <button class="tab-button" data-tab="linux">Linux</button>
+                </div>
+
+                <div id="windows-tab" class="tab-content active">
+                    <ol>
+                        <li>If you haven't already, install these command-line tools
+                            using `winget` (Windows Package Manager).
+                            <pre><code>winget install yt-dlp ffmpeg</code></pre>
+                            <small>If `winget` is not available, you can follow official installation guides for <a
+                                    href="https://github.com/yt-dlp/yt-dlp#installation" target="_blank">yt-dlp</a> and
+                                <a href="https://ffmpeg.org/download.html" target="_blank">ffmpeg</a>.</small>
+                        </li>
+                        <li>Search for "Command Prompt" or "PowerShell" in your Windows search
+                            bar.</li>
+                        <li>Paste the copied command into your terminal and press `Enter`.</li>
+                    </ol>
+                </div>
+
+                <div id="macos-tab" class="tab-content">
+                    <ol>
+                        <li>If you haven't already, install these command-line tools using Homebrew.
+                            <pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+                            <small>Then:</small>
+                            <pre><code>brew install yt-dlp ffmpeg</code></pre>
+                        </li>
+                        <li>Search for "Terminal" in Spotlight (Cmd + Space) or find it in
+                            `Applications/Utilities`.</li>
+                        <li>Paste the copied command into your terminal and press `Enter`.</li>
+                    </ol>
+                </div>
+
+                <div id="linux-tab" class="tab-content">
+                    <ol>
+                        <li>Use your distribution's package manager.
+                            <br>
+                            Debian/Ubuntu:
+                            <pre><code>sudo apt update && sudo apt install yt-dlp ffmpeg</code></pre>
+                            Fedora:
+                            <pre><code>sudo dnf install yt-dlp ffmpeg</code></pre>
+                            Arch Linux:
+                            <pre><code>sudo pacman -S yt-dlp ffmpeg</code></pre>
+                        </li>
+                        <li>Use your distribution's terminal application (e.g., GNOME Terminal,
+                            Konsole, xterm).</li>
+                        <li>Paste the copied command into your terminal and press `Enter`.</li>
+                    </ol>
+                </div>
+
+                <p>The downloaded file will appear in the specified output folder, or in the folder where you ran the
+                    command if no folder was specified.</p>
+                <p>For more detailed information on `yt-dlp`, visit its <a href="https://github.com/yt-dlp/yt-dlp"
+                        target="_blank">GitHub page</a>.</p>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+</html>
